@@ -7,8 +7,10 @@
     "~~~~ BUILD TASKS ~~~~": "",
     "build/dev": "webpack",
     "build/prod": "webpack -p",
+    "storybook/build": "build-storybook -c ./@config/storybook",
     "~~~~ DEV TASKS ~~~~": "",
     "run/hmr": "yarn build/dev; webpack-dev-server --hot",
+    "storybook/run": "start-storybook -p 6006 -c ./@config/storybook",
     "~~~ UTILS ~~~": "",
     "component/create": "node @scripts/create-component.js"
   },
@@ -24,6 +26,10 @@
     "react-jss": "^8.6.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^4.0.9",
+    "@storybook/addon-knobs": "^4.0.9",
+    "@storybook/addon-viewport": "^4.0.9",
+    "@storybook/react": "^4.0.9",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.3",

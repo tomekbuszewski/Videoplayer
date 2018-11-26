@@ -6,6 +6,7 @@ const date = new Date();
 
 const renderBody = `<div>Hello</div>`;
 const name = `/**
+ * @flow
  * @author ${userInfo().username}
  * @since ${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}
  */`;
