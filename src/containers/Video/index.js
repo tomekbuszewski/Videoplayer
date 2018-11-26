@@ -24,6 +24,13 @@ type State = {
   muted: boolean,
 }
 
+const initialState = {
+  duration: 0,
+  paused: true,
+  muted: false,
+  position: 0,
+};
+
 class Video extends React.Component<Props, State> {
   static defaultProps = {
     controls: false,
@@ -35,19 +42,27 @@ class Video extends React.Component<Props, State> {
     this.videoReference = React.createRef();
     this.video = null;
     this.playbackInterval = null;
+    this.playbackIntervalValue = 500;
 
     this.state = {
-      duration: 0,
-      paused: true,
-      muted: false,
-      position: 0,
+      ...initialState,
     };
   }
 
   componentDidMount() {
-    if (this.videoReference.current !== null) {
-      this.assignVideoRef();
-      this.awaitVideoReadyState();
+    this.handleVideo();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { src: oldSrc } = prevProps;
+    const { src: currentSrc } = this.props;
+
+    /**
+     * This is fired only when source is changed.
+     */
+    if (oldSrc !== currentSrc) {
+      this.resetState();
+      this.handleVideo();
     }
   }
 
@@ -120,13 +135,36 @@ class Video extends React.Component<Props, State> {
     this.video.addEventListener('durationchange', setMetadata);
   }
 
+  /**
+   * Method that resets the entire state to the initial values.
+   */
+  resetState() {
+    this.setState({
+      ...initialState,
+    });
+  }
+
+  /**
+   * Method fired after obtaining source for video.
+   */
+  handleVideo() {
+    if (this.videoReference.current !== null) {
+      this.assignVideoRef();
+      this.awaitVideoReadyState();
+    }
+  }
+
+  /**
+   * Method that watches current video time and sets it to state.
+   * Set in interval every ~500ms (default).
+   */
   watchVideoTime(start: boolean) {
     if (start) {
       this.playbackInterval = window.setInterval(() => {
         this.setState({
           position: this.video.currentTime,
         });
-      }, 500);
+      }, this.playbackIntervalValue);
     } else {
       clearInterval(this.playbackInterval);
     }
@@ -154,11 +192,10 @@ class Video extends React.Component<Props, State> {
         <video
           controls={controls}
           muted={muted}
-          paused={paused.toString()}
           ref={this.videoReference}
           style={{ width: '100%' }}
         >
-          <source src={src} type="video/ogg" />
+          <source src={src} type="video/mp4" />
         </video>
         {duration && (
           <React.Fragment>

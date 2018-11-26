@@ -30,7 +30,7 @@ const Timeline = (props: Props) => {
 
   return (
     <div className={classes.Timeline}>
-      <p style={{ position: 'absolute', left: getPercentage(duration, position, true) }}>{position}</p>
+      <p style={{ position: 'absolute', left: getPercentage(duration, position, true) }}>{position} / {duration}</p>
       {highlights.map((item: Object) => (
         <button
           key={`timeline-${item.time}`}

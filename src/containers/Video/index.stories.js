@@ -21,7 +21,7 @@ storiesOf('Molecules', module)
   .add('Video', () => (
     <Video
       controls={boolean('Controls', false)}
-      src={text('Source', 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4')}
+      src={text('Source', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4')}
       highlights={highlights}
     />
   ));
