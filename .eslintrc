@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }]
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  }
+}
