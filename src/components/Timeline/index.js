@@ -15,21 +15,33 @@ type Props = {
   classes: Object,
   duration: number,
   highlights: Object[],
+  position: number,
   onClick: Function,
 }
 
-const Timeline = ({ classes, duration, highlights, onClick }: Props) => (
-  <div className={classes.Timeline}>
-    {highlights.map((item: Object) => (
-      <button
-        key={`timeline-${item.time}`}
-        type="button"
-        className={classes.Pointer}
-        style={{ left: getPercentage(duration, item.time, true) }}
-        onClick={() => { onClick(item.time); }}
-      />
-    ))}
-  </div>
-);
+const Timeline = (props: Props) => {
+  const {
+    classes,
+    duration,
+    highlights,
+    position,
+    onClick,
+  } = props;
+
+  return (
+    <div className={classes.Timeline}>
+      <p style={{ position: 'absolute', left: getPercentage(duration, position, true) }}>{position}</p>
+      {highlights.map((item: Object) => (
+        <button
+          key={`timeline-${item.time}`}
+          type="button"
+          className={classes.Pointer}
+          style={{ left: getPercentage(duration, item.time, true) }}
+          onClick={() => { onClick(item.time); }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default inject(styles)(Timeline);

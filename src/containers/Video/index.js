@@ -21,6 +21,7 @@ type State = {
   duration: number,
   paused: boolean,
   position?: number,
+  muted: boolean,
 }
 
 class Video extends React.Component<Props, State> {
@@ -33,10 +34,13 @@ class Video extends React.Component<Props, State> {
 
     this.videoReference = React.createRef();
     this.video = null;
+    this.playbackInterval = null;
 
     this.state = {
       duration: 0,
       paused: true,
+      muted: false,
+      position: 0,
     };
   }
 
@@ -62,6 +66,23 @@ class Video extends React.Component<Props, State> {
 
     this.setState({
       paused: !statePaused,
+    }, () => {
+      const { paused: currentlyPaused } = this.state;
+      this.watchVideoTime(!currentlyPaused);
+    });
+  };
+
+  /**
+   * Method for toggling audio state.
+   */
+  toggleAudio = (): void => {
+    const { muted } = this.video;
+    const { muted: stateMuted } = this.state;
+
+    this.video.muted = !muted;
+
+    this.setState({
+      muted: !stateMuted,
     });
   };
 
@@ -99,27 +120,52 @@ class Video extends React.Component<Props, State> {
     this.video.addEventListener('durationchange', setMetadata);
   }
 
+  watchVideoTime(start: boolean) {
+    if (start) {
+      this.playbackInterval = window.setInterval(() => {
+        this.setState({
+          position: this.video.currentTime,
+        });
+      }, 500);
+    } else {
+      clearInterval(this.playbackInterval);
+    }
+  }
+
   render() {
     const { src, controls, highlights } = this.props;
-    const { duration, paused } = this.state;
+    const {
+      duration,
+      paused,
+      position,
+      muted,
+    } = this.state;
 
     if (!src) {
       return <div>Please provide source for the video!</div>;
     }
 
     /**
-     * For brevity I reducer the `source` to just one, normally it should be an array
-     * of objects pairing source and type ({ src: "...", type: "videoReference/mp4" }).
+     * For brevity I reduced the `source` to just one, normally it should be an array
+     * of objects pairing source and type ({ src: "...", type: "video/mp4" }).
      */
     return (
-      <figure style={{ position: 'relative' }}>
-        <video controls={controls} ref={this.videoReference} data-paused={paused} style={{ width: '100%' }}>
+      <figure>
+        <video
+          controls={controls}
+          muted={muted}
+          paused={paused.toString()}
+          ref={this.videoReference}
+          style={{ width: '100%' }}
+        >
           <source src={src} type="video/ogg" />
         </video>
         {duration && (
           <React.Fragment>
             <ToggleButton onClick={this.toggleVideo} paused={paused} />
+            <button type="button" onClick={this.toggleAudio}>{muted ? 'Unmute' : 'Mute'}</button>
             <Timeline
+              position={position}
               duration={duration}
               highlights={highlights}
               onClick={this.setPlaybackPosition}
