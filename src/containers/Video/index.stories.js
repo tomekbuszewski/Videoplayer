@@ -8,11 +8,12 @@ import Video from '.';
 const highlights = [
   {
     time: 100,
-    text: 'Lorem ipsum',
+    caption: 'Lorem ipsum',
   },
   {
     time: 200,
-    text: 'Dolor sit',
+    caption: 'Dolor sit',
+    image: 'https://www.fillmurray.com/300/200',
   },
 ];
 

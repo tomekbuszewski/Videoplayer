@@ -34,7 +34,7 @@ const initialState = {
 class Video extends React.Component<Props, State> {
   static defaultProps = {
     controls: false,
-  }
+  };
 
   constructor() {
     super();
@@ -43,6 +43,7 @@ class Video extends React.Component<Props, State> {
     this.video = null;
     this.playbackInterval = null;
     this.playbackIntervalValue = 500;
+    this.hashIdentifier = 'time-';
 
     this.state = {
       ...initialState,
@@ -63,6 +64,24 @@ class Video extends React.Component<Props, State> {
     if (oldSrc !== currentSrc) {
       this.resetState();
       this.handleVideo();
+    }
+  }
+
+  /**
+   * Method that sets time to address bar (using hash)
+   */
+  setVideoPositionToBar() {
+    const { position } = this.state;
+
+    window.location.hash = `${this.hashIdentifier}${position}`;
+  }
+
+  getVideoPositionFromBar() {
+    const hashValue = window.location.hash;
+
+    if (hashValue.indexOf(this.hashIdentifier) === 0) {
+      const playbackTime = hashValue.replace(this.hashIdentifier, '');
+      this.setPlaybackPosition(playbackTime);
     }
   }
 
@@ -105,7 +124,12 @@ class Video extends React.Component<Props, State> {
    * Method that sets playback position.
    */
   setPlaybackPosition = (position: number): void => {
-    this.video.currentTime = position;
+    this.setState({
+      position,
+    }, () => {
+      this.video.currentTime = position;
+      this.setVideoPositionToBar();
+    });
   };
 
   /**
@@ -151,6 +175,7 @@ class Video extends React.Component<Props, State> {
     if (this.videoReference.current !== null) {
       this.assignVideoRef();
       this.awaitVideoReadyState();
+      this.getVideoPositionFromBar();
     }
   }
 
