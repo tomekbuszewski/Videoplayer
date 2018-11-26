@@ -22,6 +22,13 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/public/',
   },
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      '@config': path.resolve('@config'),
+      '@src': path.resolve('src'),
+    },
+  },
   module: {
     rules: [
       {

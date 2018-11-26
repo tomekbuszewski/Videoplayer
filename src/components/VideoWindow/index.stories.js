@@ -1,14 +1,15 @@
 import * as React from 'react';
 
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import VideoWindow from './';
+import VideoWindow from '@src/containers/Video';
 
 storiesOf('Atoms', module)
   .addDecorator(withKnobs)
-  .add(
-    'VideoWindow',
-    withInfo()(() => <VideoWindow />),
-  );
+  .add('VideoWindow', () => (
+    <VideoWindow
+      controls={boolean('Controls', false)}
+      src={text('Source', 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4')}
+    />
+  ));

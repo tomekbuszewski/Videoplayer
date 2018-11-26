@@ -1,1 +1,5 @@
-export default {};
+export default {
+  Video: {
+    width: '100%',
+  },
+};
