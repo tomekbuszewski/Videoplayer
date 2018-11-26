@@ -8,16 +8,19 @@
 import * as React from 'react';
 
 import ToggleButton from '@src/components/PlayPause';
+import Timeline from '@src/components/Timeline';
 
 type Props = {
   controls?: boolean,
   // classes: Object,
-  src: string
+  highlights: Object[],
+  src: string,
 }
 
 type State = {
   duration: number,
   paused: boolean,
+  position?: number,
 }
 
 class Video extends React.Component<Props, State> {
@@ -63,16 +66,6 @@ class Video extends React.Component<Props, State> {
   };
 
   /**
-   * Method that converts given amount of time to percentage of whole.
-   */
-  getPercentageOfVideo = (time: number, asPercent: boolean = false): number | string => {
-    const { duration } = this.state;
-    const value: number = time * 100 / duration;
-
-    return asPercent ? `${value}%` : value;
-  };
-
-  /**
    * Method that sets playback position.
    */
   setPlaybackPosition = (position: number): void => {
@@ -107,7 +100,7 @@ class Video extends React.Component<Props, State> {
   }
 
   render() {
-    const { src, controls } = this.props;
+    const { src, controls, highlights } = this.props;
     const { duration, paused } = this.state;
 
     if (!src) {
@@ -119,13 +112,21 @@ class Video extends React.Component<Props, State> {
      * of objects pairing source and type ({ src: "...", type: "videoReference/mp4" }).
      */
     return (
-      <React.Fragment>
-        <button onClick={() => { this.setPlaybackPosition(10); }}>Duration: {duration}</button>
-        <ToggleButton onClick={this.toggleVideo} paused={paused} />
-        <video controls={controls} ref={this.videoReference} data-paused={paused}>
+      <figure style={{ position: 'relative' }}>
+        <video controls={controls} ref={this.videoReference} data-paused={paused} style={{ width: '100%' }}>
           <source src={src} type="video/ogg" />
         </video>
-      </React.Fragment>
+        {duration && (
+          <React.Fragment>
+            <ToggleButton onClick={this.toggleVideo} paused={paused} />
+            <Timeline
+              duration={duration}
+              highlights={highlights}
+              onClick={this.setPlaybackPosition}
+            />
+          </React.Fragment>
+        )}
+      </figure>
     );
   }
 }
