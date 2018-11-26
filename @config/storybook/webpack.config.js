@@ -1,8 +1,8 @@
-const { webpackModule, resolve } = require("../../webpack.config");
+const webpack = require("../../webpack.config");
 
 module.exports = (baseConfig, env, config) => {
-  config.module = webpackModule;
-  config.resolve = { ...config.resolve, ...resolve };
+  config.module = webpack.module;
+  config.resolve = { ...config.resolve, ...webpack.resolve };
 
   return config;
 };
