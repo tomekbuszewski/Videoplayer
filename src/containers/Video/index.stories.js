@@ -15,6 +15,10 @@ export const highlights = [
     caption: 'Dolor sit',
     image: 'https://www.fillmurray.com/300/200',
   },
+  {
+    time: '05:00',
+    caption: 'Amet',
+  }
 ];
 
 storiesOf('Molecules', module)

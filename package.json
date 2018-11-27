@@ -13,6 +13,7 @@
     "storybook/run": "start-storybook -p 6006 -c ./@config/storybook",
     "test/run": "jest",
     "test/run/coverage": "jest --coverage",
+    "test/update": "jest --updateSnapshot",
     "eslint/run": "eslint -c ./.eslintrc ./src/**/*",
     "eslint/fix": "eslint --fix",
     "~~~ UTILS ~~~": "",

@@ -18,16 +18,31 @@ exports[`VideoControls tests should match snapshot with highlights 1`] = `
       <div
         className="Timeline-Track-0-1-6"
       />
+      <input
+        className="Timeline-Track-0-1-6 Timeline-Range-0-1-7"
+        defaultValue={30}
+        max={100}
+        min={0}
+        onChange={[Function]}
+        step={1}
+        type="range"
+      />
       <div
-        className="Timeline-Pointer-0-1-7"
+        className="Timeline-Pointer-0-1-9"
         style={
           Object {
             "left": "30%",
           }
         }
-      />
+      >
+        <span
+          className="Timeline-Timer-0-1-8"
+        >
+          00:30
+        </span>
+      </div>
       <div
-        className="Highlight-Highlight-0-1-8"
+        className="Highlight-Highlight-0-1-10 Highlight-HighlightRotated-0-1-11"
         style={
           Object {
             "left": "100%",
@@ -35,50 +50,23 @@ exports[`VideoControls tests should match snapshot with highlights 1`] = `
         }
       >
         <button
-          className="Highlight-Pointer-0-1-9"
+          className="Highlight-Pointer-0-1-12"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
         />
         <div
-          className="Highlight-CaptionHolder-0-1-10"
+          className="Highlight-CaptionHolder-0-1-13"
         >
           <p>
             Lorem ipsum
           </p>
         </div>
       </div>
-      <div
-        className="Highlight-Highlight-0-1-8"
-        style={
-          Object {
-            "left": "200%",
-          }
-        }
-      >
-        <button
-          className="Highlight-Pointer-0-1-9"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          type="button"
-        />
-        <div
-          className="Highlight-CaptionHolder-0-1-10"
-        >
-          <img
-            alt=""
-            src="https://www.fillmurray.com/300/200"
-          />
-          <p>
-            Dolor sit
-          </p>
-        </div>
-      </div>
     </div>
     <button
-      className="GenericButton-GenericButton-0-1-12"
+      className="GenericButton-GenericButton-0-1-15"
       onClick={[Function]}
       type="button"
     />
@@ -104,17 +92,32 @@ exports[`VideoControls tests should match snapshot without highlights 1`] = `
       <div
         className="Timeline-Track-0-1-6"
       />
+      <input
+        className="Timeline-Track-0-1-6 Timeline-Range-0-1-7"
+        defaultValue={30}
+        max={100}
+        min={0}
+        onChange={[Function]}
+        step={1}
+        type="range"
+      />
       <div
-        className="Timeline-Pointer-0-1-7"
+        className="Timeline-Pointer-0-1-9"
         style={
           Object {
             "left": "30%",
           }
         }
-      />
+      >
+        <span
+          className="Timeline-Timer-0-1-8"
+        >
+          00:30
+        </span>
+      </div>
     </div>
     <button
-      className="GenericButton-GenericButton-0-1-12"
+      className="GenericButton-GenericButton-0-1-15"
       onClick={[Function]}
       type="button"
     />

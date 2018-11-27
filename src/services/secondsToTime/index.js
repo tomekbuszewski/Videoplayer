@@ -1,6 +1,12 @@
 // @flow
 
-const makeDoubleDigits = (input: number): string => input <= 9 ? `0${input}` : input;
+const makeDoubleDigits = (input: number): string => {
+  if (input <= 9) {
+    return input;
+  }
+
+  return `0${input}`;
+};
 
 /**
  * I know I could use momentjs, and if it would be available in the project

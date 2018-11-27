@@ -17,14 +17,13 @@ module.exports = {
       'react',
       'react-dom',
       'react-jss',
-      'uniqid',
     ],
     index: ['./src/index.js'],
   },
   output: {
     path: OUTPUT,
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: '',
   },
   resolve: {
     extensions: ['.js'],

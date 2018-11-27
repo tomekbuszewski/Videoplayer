@@ -2,18 +2,18 @@
 
 exports[`Highlight tests should match snapshot with caption and image 1`] = `
 <div
-  className="Highlight-Highlight-0-1-1"
+  className="Highlight-Highlight-0-1-1 Highlight-HighlightRotated-0-1-2"
   style={Object {}}
 >
   <button
-    className="Highlight-Pointer-0-1-2"
+    className="Highlight-Pointer-0-1-3"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     type="button"
   />
   <div
-    className="Highlight-CaptionHolder-0-1-3 Highlight-CaptionHolderActive-0-1-4"
+    className="Highlight-CaptionHolder-0-1-4 Highlight-CaptionHolderActive-0-1-5"
   >
     <img
       alt=""
@@ -28,18 +28,18 @@ exports[`Highlight tests should match snapshot with caption and image 1`] = `
 
 exports[`Highlight tests should match snapshot with caption and without image 1`] = `
 <div
-  className="Highlight-Highlight-0-1-1"
+  className="Highlight-Highlight-0-1-1 Highlight-HighlightRotated-0-1-2"
   style={Object {}}
 >
   <button
-    className="Highlight-Pointer-0-1-2"
+    className="Highlight-Pointer-0-1-3"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     type="button"
   />
   <div
-    className="Highlight-CaptionHolder-0-1-3 Highlight-CaptionHolderActive-0-1-4"
+    className="Highlight-CaptionHolder-0-1-4 Highlight-CaptionHolderActive-0-1-5"
   >
     <p>
       Test caption
@@ -50,18 +50,18 @@ exports[`Highlight tests should match snapshot with caption and without image 1`
 
 exports[`Highlight tests should match snapshot with image and without caption 1`] = `
 <div
-  className="Highlight-Highlight-0-1-1"
+  className="Highlight-Highlight-0-1-1 Highlight-HighlightRotated-0-1-2"
   style={Object {}}
 >
   <button
-    className="Highlight-Pointer-0-1-2"
+    className="Highlight-Pointer-0-1-3"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     type="button"
   />
   <div
-    className="Highlight-CaptionHolder-0-1-3 Highlight-CaptionHolderActive-0-1-4"
+    className="Highlight-CaptionHolder-0-1-4 Highlight-CaptionHolderActive-0-1-5"
   >
     <img
       alt=""
@@ -73,11 +73,11 @@ exports[`Highlight tests should match snapshot with image and without caption 1`
 
 exports[`Highlight tests should match snapshot without image or caption 1`] = `
 <div
-  className="Highlight-Highlight-0-1-1"
+  className="Highlight-Highlight-0-1-1 Highlight-HighlightRotated-0-1-2"
   style={Object {}}
 >
   <button
-    className="Highlight-Pointer-0-1-2"
+    className="Highlight-Pointer-0-1-3"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
