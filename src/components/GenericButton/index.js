@@ -28,6 +28,6 @@ const GenericButton = (props: Props) => {
   } = props;
 
   return <button className={classes.GenericButton} type="button" onClick={onClick}>{active ? activeState : inactiveState}</button>;
-}
+};
 
 export default inject(styles)(GenericButton);

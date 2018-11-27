@@ -9,8 +9,6 @@ import * as React from 'react';
 import View from '@src/components/Highlight';
 
 type Props = {
-  highlights: Object[],
-  position: number,
   onClick: Function,
 };
 

@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 
 import Video from '.';
 
-const highlights = [
+export const highlights = [
   {
     time: 100,
     caption: 'Lorem ipsum',

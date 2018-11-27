@@ -1,13 +1,17 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
-import Highlight from './';
+import Highlight from '.';
 
 describe('Highlight tests', () => {
-  it ('should match snapshot', () => {
-    const component = renderer.create(<Highlight />);
-    const tree = component.toJSON();
+  it('should toggle its state', () => {
+    const wrapper = mount(<Highlight onClick={() => false} />);
+    const instance = wrapper.instance();
 
-    expect(tree).toMatchSnapshot();
+    expect(wrapper.state().active).toBeFalsy();
+
+    instance.toggleHover();
+
+    expect(wrapper.state().active).toBeTruthy();
   });
 });

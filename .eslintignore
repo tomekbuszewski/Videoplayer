@@ -1,2 +1,5 @@
 @config/**/*
 @scripts/**/*
+*.stories.js
+*.test.js
+*.html

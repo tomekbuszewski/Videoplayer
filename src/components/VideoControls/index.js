@@ -20,7 +20,7 @@ import styles from './index.styles';
 type Props = {
   classes: Object,
   duration: number,
-  highlights: Object[],
+  highlights?: Object[],
   muted: boolean,
   paused: boolean,
   position: number,
@@ -63,6 +63,10 @@ const VideoControls = (props: Props) => {
       </div>
     </div>
   );
+};
+
+VideoControls.defaultProps = {
+  highlights: null,
 };
 
 export default inject(styles)(VideoControls);
