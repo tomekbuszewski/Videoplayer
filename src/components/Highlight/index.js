@@ -19,6 +19,7 @@ type Props = {
   onMouseEnter: Function,
   onMouseLeave: Function,
   style: Object,
+  rotated?: boolean;
 };
 
 const Highlight = (props: Props) => {
@@ -31,10 +32,11 @@ const Highlight = (props: Props) => {
     onMouseLeave,
     style,
     onClick,
+    rotated,
   } = props;
 
   return (
-    <div style={{ ...style }} className={classes.Highlight}>
+    <div style={{ ...style }} className={c(classes.Highlight, rotated && classes.HighlightRotated)}>
       <button
         type="button"
         onClick={onClick}
@@ -55,6 +57,7 @@ const Highlight = (props: Props) => {
 Highlight.defaultProps = {
   image: false,
   caption: false,
+  rotated: true,
 };
 
 export default inject(styles)(Highlight);

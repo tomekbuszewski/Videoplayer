@@ -1,9 +1,9 @@
-import { COLOR_WHITE, COLOR_BRAND } from '@config/colors';
+import { COLOR_WHITE } from '@config/colors';
 import {
   OPACITY_MEDIUM,
   STEP_EXTRASMALL,
   STEP_SMALL,
-  GET_STEP,
+  GET_STEP, STEP_MEDIUM,
 } from '@config/visuals';
 
 export default {
@@ -24,6 +24,18 @@ export default {
     opacity: OPACITY_MEDIUM,
   },
 
+  Range: {
+    opacity: 0,
+    width: `calc(100% + ${GET_STEP(STEP_SMALL)}px)`,
+    left: -GET_STEP(STEP_SMALL) / 2,
+  },
+
+  Timer: {
+    color: COLOR_WHITE,
+    position: 'absolute',
+    top: GET_STEP(STEP_MEDIUM),
+  },
+
   Pointer: {
     top: '50%',
     left: 0,
@@ -31,6 +43,7 @@ export default {
     position: 'absolute',
     background: COLOR_WHITE,
     borderRadius: GET_STEP(STEP_SMALL),
+    pointerEvents: 'none',
 
     width: GET_STEP(STEP_SMALL),
     height: GET_STEP(STEP_SMALL),

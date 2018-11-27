@@ -18,6 +18,18 @@ export default {
     top: 0,
   },
 
+  HighlightRotated: {
+    transform: `rotate(180deg) translate(${GET_STEP(STEP_MEDIUM)}px, ${GET_STEP(STEP_MEDIUM)}px)`,
+
+    '& $CaptionHolder': {
+      transform: `translate(-50%, ${GET_STEP(STEP_SMALL)}px) rotate(180deg)`,
+    },
+
+    '& $CaptionHolderActive': {
+      transform: 'translate(-50%, 0) rotate(180deg)',
+    },
+  },
+
   Pointer: {
     cursor: 'pointer',
     background: 'none',

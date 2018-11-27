@@ -80,18 +80,6 @@ class Video extends React.Component<Props, State> {
   }
 
   /**
-   * Method for getting playback position from address bar (if any).
-   */
-  getVideoPositionFromBar() {
-    const hashValue = window.location.hash;
-
-    if (hashValue.indexOf(this.hashIdentifier) === 0) {
-      const playbackTime = hashValue.replace(this.hashIdentifier, '');
-      this.setPlaybackPosition(playbackTime);
-    }
-  }
-
-  /**
    * Method for toggling playback state.
    */
   toggleVideo = (): void => {
@@ -180,7 +168,6 @@ class Video extends React.Component<Props, State> {
     if (this.videoReference.current !== null) {
       this.assignVideoRef();
       this.awaitVideoReadyState();
-      this.getVideoPositionFromBar();
     }
   }
 

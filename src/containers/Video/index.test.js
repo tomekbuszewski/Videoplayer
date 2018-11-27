@@ -64,16 +64,6 @@ describe('Video tests', () => {
     expect(window.location.hash).toBe(`#${instance.hashIdentifier}10`);
   });
 
-  it('should get playback position from address bar', () => {
-    wrapper.setState({ position: 10 });
-
-    instance.setVideoPositionToBar();
-    instance.getVideoPositionFromBar();
-
-    expect(wrapper.state().position).toBe(10);
-    expect(window.location.hash).toBe(`#${instance.hashIdentifier}10`);
-  });
-
   it('should set playback position properly', () => {
     expect(wrapper.state().position).toBe(0);
     instance.setPlaybackPosition(25);

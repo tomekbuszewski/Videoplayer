@@ -11,16 +11,20 @@ module.exports = {
   devtool: PROD ? 'none' : 'inline-source-map',
   entry: {
     vendor: [
+      'babel-polyfill',
+      'classnames',
+      'color',
       'react',
       'react-dom',
-      'babel-polyfill',
+      'react-jss',
+      'uniqid',
     ],
     index: ['./src/index.js'],
   },
   output: {
     path: OUTPUT,
     filename: '[name].js',
-    publicPath: '/public/',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js'],
@@ -68,7 +72,7 @@ module.exports = {
       minify: true,
       hash: true,
       inject: 'body',
-      title: 'SSR',
+      title: 'Video player',
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async',

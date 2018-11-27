@@ -6,13 +6,15 @@
   "scripts": {
     "~~~~ BUILD TASKS ~~~~": "",
     "build/dev": "webpack",
-    "build/prod": "webpack -p",
+    "build/prod": "NODE_ENV=production webpack --production",
     "storybook/build": "build-storybook -c ./@config/storybook",
     "~~~~ DEV TASKS ~~~~": "",
     "run/hmr": "yarn build/dev; webpack-dev-server --hot",
     "storybook/run": "start-storybook -p 6006 -c ./@config/storybook",
     "test/run": "jest",
     "test/run/coverage": "jest --coverage",
+    "eslint/run": "eslint -c ./.eslintrc ./src/**/*",
+    "eslint/fix": "eslint --fix",
     "~~~ UTILS ~~~": "",
     "component/create": "node @scripts/create-component.js"
   },
@@ -29,15 +31,13 @@
     "color": "^3.1.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
-    "immutable": "^4.0.0-rc.12",
     "jest": "^23.4.2",
     "prompts": "^1.2.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-hot-loader": "^4.3.12",
     "react-jss": "^8.6.1",
-    "react-test-renderer": "^16.6.3",
-    "svg-react-loader": "^0.4.6"
+    "react-test-renderer": "^16.6.3"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -64,6 +64,7 @@
     "flowtype": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "script-ext-html-webpack-plugin": "^2.0.1",
+    "svg-react-loader": "^0.4.6",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
