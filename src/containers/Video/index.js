@@ -15,7 +15,7 @@ import styles from './index.styles';
 type Props = {
   controls?: boolean,
   classes: Object,
-  highlights: Object[],
+  highlights?: Object[] | null,
   src: string,
 }
 
@@ -36,6 +36,7 @@ const initialState = {
 class Video extends React.Component<Props, State> {
   static defaultProps = {
     controls: false,
+    highlights: null,
   };
 
   constructor() {
@@ -94,10 +95,9 @@ class Video extends React.Component<Props, State> {
    * Method for toggling playback state.
    */
   toggleVideo = (): void => {
-    const { paused } = this.video;
     const { paused: statePaused } = this.state;
 
-    if (paused) {
+    if (statePaused) {
       this.video.play();
     } else {
       this.video.pause();
@@ -201,7 +201,12 @@ class Video extends React.Component<Props, State> {
   }
 
   render() {
-    const { classes, src, controls, highlights } = this.props;
+    const {
+      classes,
+      src,
+      controls,
+      highlights,
+    } = this.props;
     const {
       duration,
       paused,
@@ -218,12 +223,12 @@ class Video extends React.Component<Props, State> {
      * of objects pairing source and type ({ src: "...", type: "video/mp4" }).
      */
     return (
-      <figure className={classes.VideoContainer}>
+      <figure className={classes && classes.VideoContainer}>
         <video
           controls={controls}
           muted={muted}
           ref={this.videoReference}
-          className={classes.VideoWindow}
+          className={classes && classes.VideoWindow}
         >
           <source src={src} type="video/mp4" />
         </video>
@@ -245,4 +250,5 @@ class Video extends React.Component<Props, State> {
   }
 }
 
+export { Video as VideoComponent };
 export default jss(styles)(Video);

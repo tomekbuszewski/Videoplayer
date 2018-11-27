@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayPause tests should match snapshot while not paused 1`] = `
+<button
+  className="PlayPause-Button-0-1-1"
+  onClick={[Function]}
+  type="button"
+/>
+`;
+
+exports[`PlayPause tests should match snapshot while paused 1`] = `
+<button
+  className="PlayPause-Button-0-1-1"
+  onClick={[Function]}
+  type="button"
+/>
+`;

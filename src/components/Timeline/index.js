@@ -16,7 +16,7 @@ import styles from './index.styles';
 type Props = {
   classes: Object,
   duration: number,
-  highlights: Object[],
+  highlights: Object[] | null,
   position: number,
   onClick: Function,
 }
@@ -34,7 +34,7 @@ const Timeline = (props: Props) => {
     <div className={classes.Timeline}>
       <div className={classes.Track} />
       <div className={classes.Pointer} style={{ left: getPercentage(duration, position, true) }} />
-      {highlights.map((item: Object) => (
+      {highlights && highlights.map((item: Object) => (
         <Highlight
           key={`timeline-${item.time}`}
           className={classes.Pointer}
@@ -46,6 +46,6 @@ const Timeline = (props: Props) => {
       ))}
     </div>
   );
-}
+};
 
 export default inject(styles)(Timeline);

@@ -19,7 +19,9 @@ type Props = {
 }
 
 const PlayPause = ({ classes, onClick, paused }: Props) => (
-  <button type="button" onClick={onClick} className={classes.Button}>{paused ? <PlayIcon /> : <PauseIcon />}</button>
+  <button type="button" onClick={onClick} className={classes.Button}>
+    {paused ? <PlayIcon /> : <PauseIcon />}
+  </button>
 );
 
 export default inject(styles)(PlayPause);

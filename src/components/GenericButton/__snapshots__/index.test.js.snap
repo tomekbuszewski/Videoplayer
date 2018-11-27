@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenericButton tests should match snapshot while active 1`] = `
+<button
+  className="GenericButton-GenericButton-0-1-1"
+  onClick={[Function]}
+  type="button"
+>
+  active
+</button>
+`;
+
+exports[`GenericButton tests should match snapshot while inactive 1`] = `
+<button
+  className="GenericButton-GenericButton-0-1-1"
+  onClick={[Function]}
+  type="button"
+>
+  inactive
+</button>
+`;
