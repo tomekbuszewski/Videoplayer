@@ -7,6 +7,9 @@
 import * as React from 'react';
 import inject from 'react-jss';
 
+import PlayIcon from '@assets/play.svg';
+import PauseIcon from '@assets/pause.svg';
+
 import styles from './index.styles';
 
 type Props = {
@@ -16,7 +19,7 @@ type Props = {
 }
 
 const PlayPause = ({ classes, onClick, paused }: Props) => (
-  <button type="button" onClick={onClick}>{paused ? '►' : '❚❚'}</button>
+  <button type="button" onClick={onClick} className={classes.Button}>{paused ? <PlayIcon /> : <PauseIcon />}</button>
 );
 
 export default inject(styles)(PlayPause);

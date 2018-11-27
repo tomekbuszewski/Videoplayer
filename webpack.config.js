@@ -25,6 +25,7 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
+      '@assets': path.resolve('@assets'),
       '@config': path.resolve('@config'),
       '@src': path.resolve('src'),
       '@services': path.resolve('src', 'services'),
@@ -36,6 +37,14 @@ module.exports = {
         test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-react-loader',
+          },
+        ],
       },
     ],
   },

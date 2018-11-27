@@ -19,11 +19,14 @@
     "testURL": "http://localhost/"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "color": "^3.1.0",
     "immutable": "^4.0.0-rc.12",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-hot-loader": "^4.3.12",
-    "react-jss": "^8.6.1"
+    "react-jss": "^8.6.1",
+    "svg-react-loader": "^0.4.6"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^4.0.9",

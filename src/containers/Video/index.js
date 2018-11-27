@@ -6,13 +6,15 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 
 import * as React from 'react';
+import jss from 'react-jss';
 
-import ToggleButton from '@src/components/PlayPause';
-import Timeline from '@src/components/Timeline';
+import Controls from '@src/components/VideoControls';
+
+import styles from './index.styles';
 
 type Props = {
   controls?: boolean,
-  // classes: Object,
+  classes: Object,
   highlights: Object[],
   src: string,
 }
@@ -76,6 +78,9 @@ class Video extends React.Component<Props, State> {
     window.location.hash = `${this.hashIdentifier}${position}`;
   }
 
+  /**
+   * Method for getting playback position from address bar (if any).
+   */
   getVideoPositionFromBar() {
     const hashValue = window.location.hash;
 
@@ -196,7 +201,7 @@ class Video extends React.Component<Props, State> {
   }
 
   render() {
-    const { src, controls, highlights } = this.props;
+    const { classes, src, controls, highlights } = this.props;
     const {
       duration,
       paused,
@@ -213,30 +218,31 @@ class Video extends React.Component<Props, State> {
      * of objects pairing source and type ({ src: "...", type: "video/mp4" }).
      */
     return (
-      <figure>
+      <figure className={classes.VideoContainer}>
         <video
           controls={controls}
           muted={muted}
           ref={this.videoReference}
-          style={{ width: '100%' }}
+          className={classes.VideoWindow}
         >
           <source src={src} type="video/mp4" />
         </video>
         {duration && (
-          <React.Fragment>
-            <ToggleButton onClick={this.toggleVideo} paused={paused} />
-            <button type="button" onClick={this.toggleAudio}>{muted ? 'Unmute' : 'Mute'}</button>
-            <Timeline
-              position={position}
-              duration={duration}
-              highlights={highlights}
-              onClick={this.setPlaybackPosition}
-            />
-          </React.Fragment>
+          <Controls
+            position={position}
+            duration={duration}
+            highlights={highlights}
+            paused={paused}
+            muted={muted}
+
+            togglePlay={this.toggleVideo}
+            toggleMute={this.toggleAudio}
+            setPlayback={this.setPlaybackPosition}
+          />
         )}
       </figure>
     );
   }
 }
 
-export default Video;
+export default jss(styles)(Video);

@@ -10,7 +10,7 @@
     "import/no-unresolved": [
       "error",
       {
-        "ignore": ["@config", "@src", "@services"]
+        "ignore": ["@assets", "@config", "@src", "@services"]
       }
     ],
     "react/jsx-filename-extension": 0,

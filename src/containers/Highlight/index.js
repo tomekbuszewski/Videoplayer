@@ -6,11 +6,9 @@
 
 import * as React from 'react';
 
-import View from "@src/components/Highlight";
+import View from '@src/components/Highlight';
 
 type Props = {
-  classes: Object,
-  duration: number,
   highlights: Object[],
   position: number,
   onClick: Function,
