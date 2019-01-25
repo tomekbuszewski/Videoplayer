@@ -94,7 +94,7 @@ Apart from that, you can find `templates` directory with a single HTML file in i
 
 ---
 
-About the code itself, I used Flow when applicable. Nowadays I am using TypeScript, but since I don't really know whether you guys like it or not, I've chosen the safe path here.
+About the code itself, I used Flow when applicable. Nowadays I am using TypeScript, but since I want to stay up-to-day with JS as well, I've used this.
 
 Code is commented when applicable as well. I didn't write any description for visual components, because writing
 
